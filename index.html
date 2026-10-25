@@ -2323,92 +2323,6 @@ footer{
   color:#c40000 !important;
 }
 
-
-
-/* Mobile-only Pick your starting point heading wrap fix */
-@media(max-width:760px){
-  #tools h2,
-  .tools h2,
-  section[id="tools"] h2{
-    font-size:clamp(34px, 9.8vw, 52px) !important;
-  }
-}
-
-
-
-/* Contact Kelvin inline action menu */
-.header-contact:focus{
-  outline:none !important;
-}
-.header-contact:focus-visible{
-  outline:2px solid rgba(196,0,0,.22) !important;
-  outline-offset:4px !important;
-}
-.header-contact-menu .contact-options{
-  min-width:335px !important;
-  background:#ffffff !important;
-  border:1px solid rgba(17,24,39,.08) !important;
-  border-radius:10px !important;
-  box-shadow:0 16px 36px rgba(17,24,39,.11),0 2px 8px rgba(17,24,39,.04) !important;
-  padding:8px !important;
-  gap:3px !important;
-}
-.header-contact-menu .contact-options a{
-  width:100% !important;
-  box-sizing:border-box !important;
-  display:grid !important;
-  grid-template-columns:auto 1fr auto !important;
-  align-items:center !important;
-  column-gap:10px !important;
-  padding:10px 12px !important;
-  border-radius:7px !important;
-  background:transparent !important;
-  color:#111827 !important;
-  text-decoration:none !important;
-}
-.header-contact-menu .contact-option-copy{
-  display:contents !important;
-}
-.header-contact-menu .contact-option-copy strong{
-  display:block !important;
-  font-size:13.5px !important;
-  line-height:1.15 !important;
-  font-weight:650 !important;
-  color:#111827 !important;
-  white-space:nowrap !important;
-}
-.header-contact-menu .contact-option-copy small{
-  display:block !important;
-  min-width:0 !important;
-  font-size:12.5px !important;
-  line-height:1.15 !important;
-  font-weight:500 !important;
-  color:#6b7280 !important;
-  white-space:nowrap !important;
-  overflow:hidden !important;
-  text-overflow:ellipsis !important;
-}
-.header-contact-menu .contact-option-arrow{
-  flex:0 0 auto !important;
-  color:#111827 !important;
-  font-size:15px !important;
-  line-height:1 !important;
-}
-.header-contact-menu .contact-options a:hover,
-.header-contact-menu .contact-options a:focus,
-.header-contact-menu .contact-options a:focus-visible{
-  background:#f5f4f2 !important;
-  color:#111827 !important;
-  outline:none !important;
-}
-.header-contact-menu .contact-options a:hover small,
-.header-contact-menu .contact-options a:focus small,
-.header-contact-menu .contact-options a:focus-visible small{
-  color:#4b5563 !important;
-}
-
-
-
 /* Two-row Contact Kelvin menu */
 .header-contact-menu .contact-options{
   min-width:270px !important;
@@ -2432,7 +2346,6 @@ footer{
   font-size:14px !important;
 }
 
-
 /* Contact Kelvin: cleaner two-column alignment */
 .header-contact-menu .contact-options{
   min-width:315px !important;
@@ -2447,7 +2360,6 @@ footer{
 .header-contact-menu .contact-option-copy small{
   text-align:left !important;
 }
-
 
 /* Contact Kelvin: move details closer to arrows */
 .header-contact-menu .contact-options a{
@@ -2466,7 +2378,6 @@ footer{
   justify-self:end !important;
 }
 
-
 /* Contact Kelvin: tighten detail-to-arrow spacing */
 .header-contact-menu .contact-options a{
   column-gap:5px !important;
@@ -2479,8 +2390,7 @@ footer{
   justify-self:end !important;
   margin-left:0 !important;
 }
-
-
+  
 /* Approved mobile contact row: keep Call/Text/Email together */
 @media(max-width:900px){
   .mobile-contact-group{
@@ -2507,7 +2417,7 @@ footer{
   }
 }
 
-
+  
 /* Mobile menu safe spacing so contact buttons do not sit behind browser controls */
 @media (max-width: 900px) {
   .mobile-menu {
@@ -2534,27 +2444,167 @@ footer{
 }
 
 
-
-
-
-/* Kelvin profile image: desktop uses uploaded desktop photo, mobile keeps original crop */
-.why-portrait picture{
-  display:block;
-  width:100%;
-}
-
-@media(min-width:981px){
-  .why-portrait img{
-    aspect-ratio:4 / 4.6 !important;
-    object-fit:cover !important;
-    object-position:center 58% !important;
+/* =========================================================
+   v27 mobile header cascade fix
+   Keeps approved header responsive after component CSS loads last.
+   ========================================================= */
+@media (min-width: 901px) {
+  header.top .mobile-menu-toggle,
+  header.top .mobile-menu {
+    display: none !important;
   }
 }
 
-@media(max-width:980px){
-  .why-portrait img{
-    object-fit:cover !important;
-    object-position:center 40% !important;
+@media (max-width: 900px) {
+  header.top .nav-links.desktop-nav.simple-dropdown-nav {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+
+  header.top .mobile-menu-toggle {
+    display: inline-flex !important;
+    margin-left: auto !important;
+    flex: 0 0 auto !important;
+  }
+
+  header.top .nav {
+    position: relative !important;
+  }
+
+  header.top .mobile-menu {
+    display: none !important;
+    position: absolute !important;
+    top: calc(100% + 10px) !important;
+    left: 16px !important;
+    right: 16px !important;
+    z-index: 9999 !important;
+    max-height: calc(100dvh - 110px) !important;
+    overflow-y: auto !important;
+    padding-bottom: max(22px, env(safe-area-inset-bottom)) !important;
+  }
+
+  header.top .mobile-menu.is-open {
+    display: grid !important;
+    gap: 14px !important;
+  }
+
+  header.top .mobile-contact-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 8px !important;
+  }
+
+  header.top .mobile-contact-grid a {
+    min-height: 46px !important;
+    padding: 10px 8px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+}
+
+@media (max-width: 620px) {
+  header.top .mobile-contact-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+}
+
+
+
+
+/* CANONICAL DESKTOP CONTACT KELVIN FLYOUT
+   Copied from the approved landing-page header behavior and scoped to the header. */
+@media (min-width:901px){
+  header.top .header-contact-menu{
+    position:relative !important;
+  }
+  header.top .header-contact-menu .contact-options{
+    position:absolute !important;
+    top:calc(100% + 10px) !important;
+    right:0 !important;
+    left:auto !important;
+    width:315px !important;
+    min-width:315px !important;
+    max-width:315px !important;
+    background:#ffffff !important;
+    border:1px solid rgba(17,24,39,.08) !important;
+    border-radius:10px !important;
+    box-shadow:0 16px 36px rgba(17,24,39,.11),0 2px 8px rgba(17,24,39,.04) !important;
+    padding:8px !important;
+    display:grid !important;
+    gap:3px !important;
+    opacity:0 !important;
+    visibility:hidden !important;
+    pointer-events:none !important;
+    transform:translateY(6px) !important;
+    transition:opacity .16s ease, transform .16s ease, visibility .16s ease !important;
+    z-index:9999 !important;
+    text-align:left !important;
+    overflow:visible !important;
+  }
+  header.top .header-contact-menu .contact-options.is-open,
+  header.top .header-contact-menu.contact-open .contact-options{
+    opacity:1 !important;
+    visibility:visible !important;
+    pointer-events:auto !important;
+    transform:translateY(0) !important;
+  }
+  header.top .header-contact-menu .contact-options a{
+    width:100% !important;
+    box-sizing:border-box !important;
+    display:grid !important;
+    grid-template-columns:72px minmax(0,1fr) 18px !important;
+    align-items:center !important;
+    column-gap:5px !important;
+    padding:10px 10px !important;
+    border-radius:7px !important;
+    background:transparent !important;
+    color:#111827 !important;
+    text-decoration:none !important;
+    font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif !important;
+    white-space:nowrap !important;
+  }
+  header.top .header-contact-menu .contact-option-copy{
+    display:contents !important;
+  }
+  header.top .header-contact-menu .contact-option-copy strong{
+    display:block !important;
+    font-size:13.25px !important;
+    line-height:1.15 !important;
+    font-weight:650 !important;
+    color:#111827 !important;
+    white-space:nowrap !important;
+    text-align:left !important;
+  }
+  header.top .header-contact-menu .contact-option-copy small{
+    display:block !important;
+    min-width:0 !important;
+    font-size:12px !important;
+    line-height:1.15 !important;
+    font-weight:500 !important;
+    color:#6b7280 !important;
+    white-space:nowrap !important;
+    overflow:hidden !important;
+    text-overflow:ellipsis !important;
+    justify-self:end !important;
+    text-align:right !important;
+    max-width:100% !important;
+  }
+  header.top .header-contact-menu .contact-option-arrow{
+    justify-self:end !important;
+    color:#111827 !important;
+    font-size:14px !important;
+    line-height:1 !important;
+    margin-left:0 !important;
+  }
+  header.top .header-contact-menu .contact-options a:hover,
+  header.top .header-contact-menu .contact-options a:focus,
+  header.top .header-contact-menu .contact-options a:focus-visible{
+    background:#f5f4f2 !important;
+    color:#111827 !important;
+    outline:none !important;
   }
 }
 
@@ -2584,96 +2634,93 @@ footer{
           <span class="lockup-tagline">Smarter moves start here</span>
         </span>
       </a>
-    
-    
-    
-    <nav class="nav-links desktop-nav simple-dropdown-nav" aria-label="Primary navigation">
-      <div class="nav-dropdown">
-        <button class="nav-drop-trigger" type="button" aria-haspopup="true" aria-expanded="false">Tools</button>
-        <div class="nav-drop-menu" aria-label="Tools menu">
-          <a href="http://affordabilityiq.smartiqrealty.com/">AffordabilityIQ</a>
-          <a href="http://areaiq.smartiqrealty.com/">AreaIQ</a>
-          <a href="http://calculator.smartiqrealty.com/">Calculator</a>
-        </div>
-      </div>
-
-      <div class="nav-dropdown">
-        <button class="nav-drop-trigger" type="button" aria-haspopup="true" aria-expanded="false">Guides</button>
-        <div class="nav-drop-menu" aria-label="Guides menu">
-          <a href="https://1stbuyer.smartiqrealty.com/">First-Time Buyer Guide</a>
-          <a href="https://buyer.smartiqrealty.com/">Buyer Guide</a>
-          <a href="https://seller.smartiqrealty.com/">Seller Guide</a>
-        </div>
-      </div>
-
-      <a href="#about">Meet Kelvin</a>
-      <a href="#testimonials">Testimonials</a>
-
-      
-      <a href="https://kelvinhart.fathomrealty.com/property-search/any/status=active,viewport=40.098659:-85.779579_39.576687:-86.452491">Home Search</a>
+ <nav aria-label="Primary navigation" class="nav-links desktop-nav simple-dropdown-nav">
+<div class="nav-dropdown">
+<button aria-expanded="false" aria-haspopup="true" class="nav-drop-trigger" type="button">Tools</button>
+<div aria-label="Tools menu" class="nav-drop-menu">
+<a href="http://affordabilityiq.smartiqrealty.com/">AffordabilityIQ</a>
+<a href="http://areaiq.smartiqrealty.com/">AreaIQ</a>
+<a href="http://calculator.smartiqrealty.com/">Calculator</a>
+</div>
+</div>
+<div class="nav-dropdown">
+<button aria-expanded="false" aria-haspopup="true" class="nav-drop-trigger" type="button">Guides</button>
+<div aria-label="Guides menu" class="nav-drop-menu">
+<a href="https://1stbuyer.smartiqrealty.com/">First-Time Buyer Guide</a>
+<a href="https://buyer.smartiqrealty.com/">Buyer Guide</a>
+<a href="https://seller.smartiqrealty.com/">Seller Guide</a>
+<a href="https://expired.smartiqrealty.com/">Expired Listing Strategy</a>
+<a href="https://negotiatoriqlanding.smartiqrealty.com/">NegotiatorIQ Overview</a>
+<a href="https://homeaccessiqlanding.smartiqrealty.com/">HomeAccessIQ Overview</a>
+</div>
+</div>
+<a href="http://smartiqrealty.com/#about">Meet Kelvin</a>
+<a href="http://smartiqrealty.com/#testimonials">Testimonials</a>
+<a href="https://kelvinhart.fathomrealty.com/property-search/any/status=active,viewport=40.098659:-85.779579_39.576687:-86.452491">Home Search</a>
 <div class="header-contact-menu">
-        <button class="header-contact" type="button" aria-haspopup="true" aria-expanded="false" data-contact-toggle>Contact Kelvin</button>
-        
-        
-        <div class="contact-options" data-contact-options>
-          <a href="tel:+13178338419">
-            <span class="contact-option-copy">
-              <strong>Call/Text</strong>
-              <small>317.833.8419</small>
-            </span>
-            <span class="contact-option-arrow">↗</span>
-          </a>
-          <a href="mailto:khart@fathomrealty.com">
-            <span class="contact-option-copy">
-              <strong>Email</strong>
-              <small>khart@fathomrealty.com</small>
-            </span>
-            <span class="contact-option-arrow">↗</span>
-          </a>
-        </div>
-      </div>
-    </nav>
-
-    <button class="mobile-menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" data-mobile-menu-toggle>
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-
-    <div class="mobile-menu" id="mobile-menu" data-mobile-menu>
-      <a class="mobile-start-link" href="#tools">Start Here</a>
-
-      
-      <a class="mobile-home-search-link" href="https://kelvinhart.fathomrealty.com/property-search/any/status=active,viewport=40.098659:-85.779579_39.576687:-86.452491">Home Search</a>
+<button aria-expanded="false" aria-haspopup="true" class="header-contact" data-contact-toggle="" type="button">Contact Kelvin</button>
+<div class="contact-options" data-contact-options="">
+<a href="tel:+13178338419">
+<span class="contact-option-copy">
+<strong>Call/Text</strong>
+<small>317.833.8419</small>
+</span>
+<span class="contact-option-arrow">↗</span>
+</a>
+<a href="mailto:khart@fathomrealty.com">
+<span class="contact-option-copy">
+<strong>Email</strong>
+<small>khart@fathomrealty.com</small>
+</span>
+<span class="contact-option-arrow">↗</span>
+</a>
+<a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0zsOQiuH6AvfWU8Rqxfl51UdPiyNC32jY5t0y-_XLlFeMGSubTkABQXg4a9fb0jCEsli8l_u5V?gv=true">
+<span class="contact-option-copy">
+<strong>Schedule a Consultation</strong>
+<small>Calendar</small>
+</span>
+<span class="contact-option-arrow">↗</span>
+</a>
+</div>
+</div>
+</nav>
+<button aria-controls="mobile-menu" aria-expanded="false" aria-label="Open menu" class="mobile-menu-toggle" data-mobile-menu-toggle="" type="button">
+<span></span>
+<span></span>
+<span></span>
+</button>
+<div class="mobile-menu" data-mobile-menu="" id="mobile-menu">
+<a class="mobile-start-link" href="http://smartiqrealty.com/#tools">Start Here</a>
+<a class="mobile-home-search-link" href="https://kelvinhart.fathomrealty.com/property-search/any/status=active,viewport=40.098659:-85.779579_39.576687:-86.452491">Home Search</a>
 <div class="mobile-menu-group">
-        <div class="mobile-menu-heading">Tools</div>
-        <a href="http://affordabilityiq.smartiqrealty.com/">AffordabilityIQ</a>
-        <a href="http://areaiq.smartiqrealty.com/">AreaIQ</a>
-        <a href="http://calculator.smartiqrealty.com/">Calculator</a>
-      </div>
-
-      <div class="mobile-menu-group">
-        <div class="mobile-menu-heading">Guides</div>
-        <a href="https://1stbuyer.smartiqrealty.com/">First-Time Buyer Guide</a>
-        <a href="https://buyer.smartiqrealty.com/">Buyer Guide</a>
-        <a href="https://seller.smartiqrealty.com/">Seller Guide</a>
-      </div>
-
-      <div class="mobile-menu-group">
-        <a href="#about">Meet Kelvin</a>
-        <a href="#testimonials">Testimonials</a>
-      </div>
-
-      <div class="mobile-menu-group mobile-contact-group">
-        <div class="mobile-menu-heading">Contact Kelvin</div>
-        <div class="mobile-contact-grid">
-          <a href="tel:+13178338419">Call</a>
-          <a href="sms:+13178338419">Text</a>
-          <a href="mailto:khart@fathomrealty.com">Email</a>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="mobile-menu-heading">Tools</div>
+<a href="http://affordabilityiq.smartiqrealty.com/">AffordabilityIQ</a>
+<a href="http://areaiq.smartiqrealty.com/">AreaIQ</a>
+<a href="http://calculator.smartiqrealty.com/">Calculator</a>
+</div>
+<div class="mobile-menu-group">
+<div class="mobile-menu-heading">Guides</div>
+<a href="https://1stbuyer.smartiqrealty.com/">First-Time Buyer Guide</a>
+<a href="https://buyer.smartiqrealty.com/">Buyer Guide</a>
+<a href="https://seller.smartiqrealty.com/">Seller Guide</a>
+<a href="https://expired.smartiqrealty.com/">Expired Listing Strategy</a>
+<a href="https://negotiatoriqlanding.smartiqrealty.com/">NegotiatorIQ Overview</a>
+<a href="https://homeaccessiqlanding.smartiqrealty.com/">HomeAccessIQ Overview</a>
+<div class="mobile-menu-group">
+<a href="http://smartiqrealty.com/#about">Meet Kelvin</a>
+<a href="http://smartiqrealty.com/#testimonials">Testimonials</a>
+</div>
+<div class="mobile-menu-group mobile-contact-group">
+<div class="mobile-menu-heading">Contact Kelvin</div>
+<div class="mobile-contact-grid">
+<a href="tel:+13178338419">Call</a>
+<a href="sms:+13178338419">Text</a>
+<a href="mailto:khart@fathomrealty.com">Email</a>
+<a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0zsOQiuH6AvfWU8Rqxfl51UdPiyNC32jY5t0y-_XLlFeMGSubTkABQXg4a9fb0jCEsli8l_u5V?gv=true">Calendar</a>
+</div>
+</div>
+</div>
+</div>
 </header>
 <main id="top">
   <section class="hero">
